@@ -19,28 +19,28 @@ tipo = None
 while True:
     try:
         mode_code = int(input(
-            "Digite [1] para o modo Em Rajada (Go-Back-N)\n"
-            "Digite [2] para o modo Individual (Repetição Seletiva)\n"
+            "Digite 1 para o modo Em Rajada (Go-Back-N)\n"
+            "Digite 2 para o modo Individual (Repetição Seletiva)\n"
             "Digite: "
         ))
         if mode_code not in [1, 2]:
-            print("\nDigite apenas [1] ou [2]\n")
+            print("\nDigite apenas 1 ou 2\n")
         else:
             tipo = modes[mode_code - 1]
             break
     except ValueError:
-        print("\nEntrada inválida! Digite um número\n")
+        print("\nEntrada inválida. Digite um número\n")
 
 max_length = 0
 while True:
     try:
-        max_length = int(input("Digite o tamanho máximo da mensagem (Máx 3): "))
+        max_length = int(input("Digite o tamanho máximo da mensagem (Max 3): "))
         if not 1 <= max_length <= 3:
-            print("\nO tamanho máximo precisa estar entre 1 e 3\n")
+            print("\nO tamanho maximo precisa estar entre 1 e 3\n")
         else:
             break
     except ValueError:
-        print("\nEntrada inválida! Digite um número\n")
+        print("\nEntrada inválida. Digite um número\n")
 
 window_size = 4  
 
@@ -89,7 +89,7 @@ while not finished and len(acksRecebidos) < num_packets:
 
             if ack_msg.startswith("ACK"):
                 window_size += 1
-                print(f"[CLIENTE] ACK recebido: {ack_msg} ✅")
+                print(f"[CLIENTE] ACK recebido: {ack_msg}")
                 ack_value = int(ack_msg.split("|")[1])  
                 print(f"[CLIENTE] Tempo de Resposta: {tempo_execucao:.4f}s ⏰\n")
 
@@ -122,7 +122,7 @@ while not finished and len(acksRecebidos) < num_packets:
                 if base != next_seq:
                     timer_start = time.time()
             else:
-                print(f"[CLIENTE] NACK recebido: {ack_msg} ❌")
+                print(f"[CLIENTE] NACK recebido: {ack_msg}")
                 print(f"[CLIENTE] Servidor congestionado")
                 finished = True
 
